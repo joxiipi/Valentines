@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: 'Comic Sans MS', cursive, sans-serif; /* cute font */
+      background-image: url('https://raw.githubusercontent.com/joxiipi/Valentines/main/IMG_20260207_113020.jpg'); /* your background image */
+      background-size: contain;       /* fit the image without zooming */
+      background-repeat: no-repeat;
+      background-position: center;
+      color: #ffedf0;                 /* soft pink font color */
+      text-shadow: 2px 2px #b30059;  /* outline for readability */
+      overflow: hidden;
+      margin: 0;
+      padding: 0;
+    }
+
+    h1 {
+      font-size: 32px;
+      margin-top: 50px;
+    }
+
+    button {
+      font-size: 22px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      margin: 20px;
+      cursor: pointer;
+      font-weight: bold;
+      transition: all 0.2s ease;
+      position: relative;
+    }
+
+    #yesBtn {
+      background-color: #ff3366;
+      color: white;
+    }
+
+    #noBtn {
+      background-color: #ffffff;
+      color: #333;
+      position: absolute;
+    }
+
+    .heart {
+      position: absolute;
+      font-size: 30px;
+      animation: float 4s infinite ease-in-out;
+    }
+
+    @keyframes float {
+      0% {transform: translateY(0px);}
+      50% {transform: translateY(-30px);}
+      100% {transform: translateY(0px);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Haiii my babbyy Pi 💕<br>Will you be my Valentineee?</h1>
+
+  <button id="yesBtn" onclick="yesClicked()">yesssss 😍</button>
+  <button id="noBtn">Nuh uh 🙄</button>
+
+  <!-- Background music -->
+  <audio autoplay loop>
+    <source src="https://raw.githubusercontent.com/joxiipi/Valentines/main/bluee.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    const yesBtn = document.getElementById("yesBtn");
+    const noBtn = document.getElementById("noBtn");
+
+    // NO button moves and makes YES bigger
+    noBtn.addEventListener("mouseover", function () {
+      // Move NO randomly
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+      noBtn.style.fontSize = (Math.random() * 10 + 14) + "px";
+
+      // Make YES bigger each time NO is hovered
+      let currentSize = parseInt(window.getComputedStyle(yesBtn).fontSize);
+      yesBtn.style.fontSize = (currentSize + 3) + "px";
+    });
+
+    // YES button clicked
+    function yesClicked() {
+      document.body.innerHTML = `
+        <h1>Yeyyyyy! 😘💖<br>Advance Happy Valentine’s Deiii, my babyy</h1>
+        <p style="font-size:18px;">i love you my cutie Joannii Pi 💙💕</p>
+      `;
+    }
+
+    // Floating hearts animation
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "🤍";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+</body>
+</html>

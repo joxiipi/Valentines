@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Valentine 💖</title>
+  <style>
+    body {
+      text-align: center;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #ff94c2, #ffcce0);
+      color: #fff;
+      overflow: hidden;
+    }
+    h1 {
+      font-size: 30px;
+      margin-top: 50px;
+      text-shadow: 2px 2px #b30059;
+    }
+    button {
+      font-size: 22px;
+      padding: 15px 30px;
+      border: none;
+      border-radius: 12px;
+      margin: 20px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    #yesBtn {
+      background-color: #ff3366;
+      color: white;
+    }
+    #noBtn {
+      background-color: #ffffff;
+      color: #333;
+      position: absolute;
+    }
+    .heart {
+      position: absolute;
+      font-size: 30px;
+      animation: float 4s infinite ease-in-out;
+    }
+    @keyframes float {
+      0% {transform: translateY(0px);}
+      50% {transform: translateY(-30px);}
+      100% {transform: translateY(0px);}
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Hey Cutie Joannii Pi 💕<br>Will you be my Valentine?</h1>
+
+  <button id="yesBtn" onclick="yesClicked()">yesssss 😍</button>
+  <button id="noBtn">Nuh uh 🙄</button>
+
+  <!-- Background music -->
+  <iframe width="0" height="0"
+    src="https://www.youtube.com/embed/GGJOC1FNqn8?autoplay=1&loop=1&playlist=GGJOC1FNqn8"
+    frameborder="0" allow="autoplay; encrypted-media">
+  </iframe>
+
+  <script>
+    const noBtn = document.getElementById("noBtn");
+
+    noBtn.addEventListener("mouseover", function () {
+      const x = Math.random() * (window.innerWidth - 120);
+      const y = Math.random() * (window.innerHeight - 120);
+      noBtn.style.left = x + "px";
+      noBtn.style.top = y + "px";
+      noBtn.style.fontSize = (Math.random() * 10 + 14) + "px";
+    });
+
+    function yesClicked() {
+      document.body.innerHTML = `
+        <h1>Yay! 😘💖<br>Happy Valentine’s Day!</h1>
+        <p style="font-size:18px;">Cutie Joannii Pi, I’m so glad you said yes 💕</p>
+      `;
+    }
+
+    // Hearts animation
+    function createHeart() {
+      const heart = document.createElement("div");
+      heart.className = "heart";
+      heart.innerText = "💖";
+      heart.style.left = Math.random() * window.innerWidth + "px";
+      heart.style.top = Math.random() * window.innerHeight + "px";
+      document.body.appendChild(heart);
+      setTimeout(() => heart.remove(), 5000);
+    }
+
+    setInterval(createHeart, 400);
+  </script>
+
+</body>
+</html>
